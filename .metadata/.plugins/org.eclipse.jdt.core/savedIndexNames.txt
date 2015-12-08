@@ -1,0 +1,4 @@
+INDEX VERSION 1.127+C:\Users\Asus\workspace\IT-Talents-TeamWorks\.metadata\.plugins\org.eclipse.jdt.core
+1961271908.index
+1577314561.index
+4021558795.index
