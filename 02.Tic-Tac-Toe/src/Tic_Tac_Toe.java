@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Tic_Tac_Toe {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter two points from Zero to Two for your move!");
+		int firstPiont = scanner.nextInt();
+		int secondPoint = scanner.nextInt();
+		while((firstPiont <0 || firstPiont > 2) || (secondPoint < 0 || secondPoint > 2)){
+			System.out.println("Wrong input! Please repeat.");
+			firstPiont = scanner.nextInt();
+			secondPoint = scanner.nextInt();
+		}
+	
+		
+		
+		
+	}
+
+}

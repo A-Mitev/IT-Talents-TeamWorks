@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+public class Tic_Tac_Toe {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter two points from Zero to Two for your move!");
+		
+	}
+
+}
