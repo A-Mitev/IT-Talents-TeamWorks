@@ -1,0 +1,62 @@
+package horse_move;
+
+import java.util.Scanner;
+
+public class Horse_Move {
+	
+	static Scanner sc = new Scanner(System.in);
+	
+	static int firstRow;
+	static int firstCol;
+	static int row; //zadavame granici na duskata po
+	static int col; //koqto shte se dviji konq
+	static char[][] board;
+	static char horseFirstPosition = '*';
+	
+	public static void main(String[] args) {
+		
+		do{
+			row = sc.nextInt();
+			if(row == 2){
+				do{
+					col = sc.nextInt();
+				}while(col < row + 1);
+			}else{
+				do{
+					col = sc.nextInt();
+				}while(col < 2);
+			}
+		}while(row < 2);
+		
+		
+		
+		board = new char[row][col];
+		
+		for(int i = 0; i < row; i++){
+			for(int j = 0; j < col; j++){
+				board[i][j] = ' ';
+			}
+		}
+		
+		printBoard();
+		
+		firstRow = sc.nextInt();
+		firstCol = sc.nextInt();
+		
+		board[firstRow][firstCol] = horseFirstPosition;
+	}
+	
+	static void printBoard() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				if (j == 0) {
+					System.out.print("| ");
+				}
+				System.out.print(board[i][j] + " | ");
+			}
+			System.out.println();
+		}
+		
+	}
+	
+}
