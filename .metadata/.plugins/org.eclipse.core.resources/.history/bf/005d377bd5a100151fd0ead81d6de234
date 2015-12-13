@@ -11,7 +11,18 @@ public class Tic_Tac_Toe {
 	static char turn = 'X'; // simvol za suotvetniq igrach
 	
 	public static void main(String[] args) {
-		//zadavame prazni mesta(space-ove) na vsichki elementi na duskata
+		// mahnah scanner-a ot main-a shte ima edin za cqlata programa i shte
+		// bude statichen
+		// System.out.println("Please enter two points from Zero to Two for your
+		// move!");
+		// int firstPiont = sc.nextInt();
+		// int secondPoint = sc.nextInt();
+		// while((firstPiont <0 || firstPiont > 2) || (secondPoint < 0 ||
+		// secondPoint > 2)){
+		// System.out.println("Wrong input! Please repeat.");
+		// firstPiont = sc.nextInt();
+		// secondPoint = sc.nextInt();
+		// }
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				board[i][j] = '_';
@@ -48,19 +59,15 @@ public class Tic_Tac_Toe {
 		if (board[rMove][0] == board[rMove][1] && board[rMove][0] == board[rMove][2]) {
 			return true;
 		}
-		if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[1][1] != '_') {
+		if (board[0][0] == board[1][1] && board[0][0] == board[2][2]) {
 			return true;
 		}
-		//na sledvashtata proverka opravih greshka vmesto board[0][2] == board[2][0], beshe board[0][0] == board[2][0]
-		//zaradi koeto davashe nepravomerna pobeda pri dadeni obstoqtelstva
-		if (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[1][1] != '_') {
+		if (board[0][2] == board[1][1] && board[0][2] == board[2][0]) {
 			return true;
 		}
 		return false;
 	}
-	
-	//tuk e realizirana samata igra s vsichki proverki za daden igrach i
-	// proverki za vuvejdaniqta
+
 	static void play() {
 
 		boolean playing = true; // ako igrata ne za vurshila
@@ -72,7 +79,7 @@ public class Tic_Tac_Toe {
 			board[row][col] = turn; //vuvejda simvola za suotveni igrach
 			if(gameOver(row,col) == true){ //proverka dali igrata ne svurshva
 				playing = false;
-				System.out.println("Game over! Player " + turn + " wins!"); //otpechatva koi e pobeditel
+				System.out.println("Game over! Player " + turn + " wins!");
 			}
 			printBoard(); // printira vuvedenite promeni po duskata
 			if(turn == 'X'){ //smqna na simvola ako e X da stanee O, a ako e O da e stane X
