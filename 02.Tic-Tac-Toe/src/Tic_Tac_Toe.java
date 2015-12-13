@@ -1,20 +1,62 @@
 import java.util.Scanner;
 
 public class Tic_Tac_Toe {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please enter two points from Zero to Two for your move!");
-		int firstPiont = scanner.nextInt();
-		int secondPoint = scanner.nextInt();
-		while((firstPiont <0 || firstPiont > 2) || (secondPoint < 0 || secondPoint > 2)){
-			System.out.println("Wrong input! Please repeat.");
-			firstPiont = scanner.nextInt();
-			secondPoint = scanner.nextInt();
-		}
 	
+	//shte pisha na shiokavica za da e razbiraemo
+	static Scanner sc = new Scanner(System.in); //tuk shte inicializiram scanner-a i shte bue bude statichen
+	static char[][] board = new char[3][3]; //tuk inicializirame duskata
+	
+	public static void main(String[] args) {
+		
+		//mahnah scanner-a ot main-a shte ima edin za cqlata programa i shte bude statichen
+		
+//		System.out.println("Please enter two points from Zero to Two for your move!");
+//		int firstPiont = sc.nextInt();
+//		int secondPoint = sc.nextInt();
+//		while((firstPiont <0 || firstPiont > 2) || (secondPoint < 0 || secondPoint > 2)){
+//			System.out.println("Wrong input! Please repeat.");
+//			firstPiont = sc.nextInt();
+//			secondPoint = sc.nextInt();
+//		}
 		
 		
+		for(int i = 0; i < 3; i++){
+			
+			for(int j = 0; j < 3; j++){
+				
+				board[i][j] = '_';
+				
+			}
+		}
+		
+		//printiram igralnoto pole
+		printBoard();
 		
 	}
+	
+	//shte printiram poletata za igra
+	static void printBoard(){
+		
+		for(int i = 0; i < 3; i++){
+			
+			System.out.println();
+			
+			for(int j = 0; j < 3; j++){
+				
+				if(j == 0){
+					
+					System.out.print("| ");
+				
+				}
+				
+				System.out.print(board[i][j] +  " | ");
+				
+			}
+		}
+		
+		System.out.println();
+		
+	}
+	
 
 }
