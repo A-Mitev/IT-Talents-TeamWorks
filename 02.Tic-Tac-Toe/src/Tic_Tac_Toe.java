@@ -8,7 +8,8 @@ public class Tic_Tac_Toe {
 	static int row;
 	static int col;
 	static char[][] board = new char[3][3]; // tuk inicializirame duskata
-
+	static char turn = 'X'; // simvol za suotvetniq igrach
+	
 	public static void main(String[] args) {
 		// mahnah scanner-a ot main-a shte ima edin za cqlata programa i shte
 		// bude statichen
@@ -27,12 +28,14 @@ public class Tic_Tac_Toe {
 				board[i][j] = '_';
 			}
 		}
+		
 		// Tozi metod printira daskata i promenite po neq.
 		play();
 	}
 
 	// shte printiram poletata za igra
 	static void printBoard() {
+		System.out.print(" ----------- ");
 		for (int i = 0; i < 3; i++) {
 			System.out.println();
 			for (int j = 0; j < 3; j++) {
@@ -41,6 +44,8 @@ public class Tic_Tac_Toe {
 				}
 				System.out.print(board[i][j] + " | ");
 			}
+			System.out.println();
+			System.out.print(" ----------- ");
 		}
 		System.out.println();
 	}
@@ -64,13 +69,24 @@ public class Tic_Tac_Toe {
 	}
 
 	static void play() {
-		printBoard();
-		System.out.println("Please enter a row and a column between 1 and 3. ");
-		row = sc.nextInt() -1;
-		col = sc.nextInt() -1;
-		board[row][col] = 'x';   // proverka dali raboti vuvezdane na simvol po koordinati
-		printBoard();
 
-		
+		boolean playing = true; // ako igrata ne za vurshila
+		printBoard(); // printira duskata
+		while(playing == true){
+			System.out.println("Please enter a row and column: ");
+			row = sc.nextInt() - 1; // vivejdame koordinati
+			col = sc.nextInt() - 1; // vivejdame koordinati
+			board[row][col] = turn; //vuvejda simvola za suotveni igrach
+			if(gameOver(row,col) == true){ //proverka dali igrata ne svurshva
+				playing = false;
+				System.out.println("Game over! Player " + turn + " wins!");
+			}
+			printBoard(); // printira vuvedenite promeni po duskata
+			if(turn == 'X'){ //smqna na simvola ako e X da stanee O, a ako e O da e stane X
+				turn = 'O';
+			}else{
+				turn = 'X';
+			}
+		}
 	}
 }
