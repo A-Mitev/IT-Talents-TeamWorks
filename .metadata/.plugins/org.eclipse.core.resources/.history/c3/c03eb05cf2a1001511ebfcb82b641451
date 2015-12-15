@@ -1,0 +1,113 @@
+package horse_move;
+
+import java.util.Scanner;
+
+public class Horse_Move {
+	
+	static Scanner sc = new Scanner(System.in);
+	
+	static int firstRow; //nachalen red
+	static int firstCol; //nachalna kolona
+	static int row; //zadavame granici na duskata po
+	static int col; //koqto shte se dviji konq
+	static char[][] board; //duska
+	static char horseFirstPosition = 'k'; //simvol kude e stupil konq
+	
+	public static void main(String[] args) {
+		
+		do{
+			System.out.print("Enter a row length: ");
+			row = sc.nextInt();
+			if(row == 2){
+				do{
+					System.out.print("Enter a col length: ");
+					col = sc.nextInt();
+				}while(col < row + 1);
+			}else{
+				do{
+					System.out.print("Enter a col length: ");
+					col = sc.nextInt();
+				}while(col < 2);
+			}
+		}while(row < 2);
+		
+		board = new char[row][col];
+		
+		for(int i = 0; i < row; i++){
+			for(int j = 0; j < col; j++){
+				board[i][j] = '_';
+			}
+		}
+		
+		printBoard();
+		
+		do{
+			System.out.print("Enter begining row: ");
+			firstRow = sc.nextInt();
+		}while(firstRow < 0 || firstRow > board.length - 1);
+		
+		do{
+			System.out.print("Enter begining col: ");
+			firstCol = sc.nextInt();
+		}while(firstCol < 0 || firstCol > board[0].length - 1);
+		
+		horseMove(board, firstRow, firstCol);
+		
+		printBoard();
+		
+	}
+	
+	static void printBoard() {
+		System.out.print(" ");
+		for(int j = 0; j < col; j++){
+			
+			System.out.print("=====");
+			
+		}
+		System.out.println();
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				if (j == 0) {
+					System.out.print("|| ");
+				}
+				System.out.print(board[i][j] + " || ");
+			}
+			System.out.println();
+		}
+		
+		System.out.print(" ");
+		for(int j = 0; j < col; j++){
+			
+			System.out.print("=====");
+			
+		}
+		
+		System.out.println();
+	}
+	
+	static void horseMove(char[][] board, int r, int c){
+		
+		if(r < 0 || r > row - 1){
+			return;
+		}
+		if(c < 0 || c > col - 1){
+			return;
+		}
+		if(board[r][c] != '_'){
+			return;
+		}
+		
+		board[r][c] = horseFirstPosition;
+		
+		horseMove(board, r + 1, c - 2);
+		horseMove(board, r + 2, c - 1);
+		horseMove(board, r + 2, c + 1);
+		horseMove(board, r + 1, c + 2);
+		horseMove(board, r - 1, c + 2);
+		horseMove(board, r - 2, c + 1);
+		horseMove(board, r - 2, c - 1);
+		horseMove(board, r - 1, c - 2);
+		
+	}
+	
+}
