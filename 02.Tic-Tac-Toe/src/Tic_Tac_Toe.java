@@ -69,15 +69,20 @@ public class Tic_Tac_Toe {
 		while(playing == true){
 			
 			System.out.println("Please enter a row and column: ");
-			row = sc.nextInt() - 1; // vivejdame koordinati
-			col = sc.nextInt() - 1; // vivejdame koordinati
+			do{
+				row = sc.nextInt() - 1; // vuvejdame red 
+			}while(row < 0 || row > 2); // vuvejdame red dokato ne vuvedem v granicata na duskata
+			
+			do{
+				col = sc.nextInt() - 1; // vuvejdame kolona 
+			}while(col < 0 || col > 2); // vuvejdame kolona dokato ne vuvedem v granicata na duskata
 				
 			checkField(row, col);
 			
 			 //vuvejda simvola za suotveni igrach
 			if(gameOver(row,col) == true){ //proverka dali igrata ne svurshva
 				playing = false;
-				System.out.println("Game over! Player " + turn + " wins!"); //otpechatva koi e pobeditel
+				System.out.println("Game over! Player with the " + turn + "'s wins!"); //otpechatva koi e pobeditel
 			}
 			if(countTurn == 9){
 				playing = false;
@@ -95,15 +100,11 @@ public class Tic_Tac_Toe {
 	
 	static void checkField(int r, int c){
 		
-		if(r < 0 || r > 2){
-			row = sc.nextInt() - 1; // vivejdame koordinati
-		}
-		if(c < 0 || c > 2){
-			col = sc.nextInt() - 1; // vivejdame koordinati
-		}
 		if(board[r][c] != ' '){
+			System.out.println("The place is already been taken please insert new coordinates: ");
 			row = sc.nextInt() - 1; // vivejdame koordinati
 			col = sc.nextInt() - 1; // vivejdame koordinati
+			checkField(row, col);
 		}
 		
 		board[row][col] = turn;
